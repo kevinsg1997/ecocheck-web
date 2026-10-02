@@ -2,6 +2,7 @@ import { Users } from 'lucide-react'
 
 import { categoryList } from '../../data/categories'
 import type { Category } from '../../types/api'
+import { ScoreRing } from '../ui/ScoreRing'
 
 const SAMPLE_PERCENTAGE = 72
 const SAMPLE_CATEGORIES: Record<Category, number> = {
@@ -10,9 +11,6 @@ const SAMPLE_CATEGORIES: Record<Category, number> = {
   waste: 56,
   consumption_and_mobility: 68,
 }
-
-const RADIUS = 42
-const CIRCUMFERENCE = 2 * Math.PI * RADIUS
 
 /** Cartão ilustrativo do resultado. Os valores são fictícios e apenas demonstram o formato. */
 export function ResultPreview() {
@@ -29,25 +27,7 @@ export function ResultPreview() {
       </div>
 
       <div className="mt-5 flex items-center gap-5">
-        <div className="relative size-28 shrink-0">
-          <svg viewBox="0 0 100 100" className="size-full -rotate-90" aria-hidden="true">
-            <circle cx="50" cy="50" r={RADIUS} fill="none" strokeWidth="9" className="stroke-brand-100" />
-            <circle
-              cx="50"
-              cy="50"
-              r={RADIUS}
-              fill="none"
-              strokeWidth="9"
-              strokeLinecap="round"
-              strokeDasharray={CIRCUMFERENCE}
-              strokeDashoffset={CIRCUMFERENCE * (1 - SAMPLE_PERCENTAGE / 100)}
-              className="stroke-brand-500"
-            />
-          </svg>
-          <span className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="font-display text-2xl font-bold">{SAMPLE_PERCENTAGE}%</span>
-          </span>
-        </div>
+        <ScoreRing value={SAMPLE_PERCENTAGE} className="text-[0.95rem]" />
         <div>
           <p className="text-xs font-medium tracking-wide text-muted uppercase">Classificação</p>
           <p className="mt-1 font-display text-xl font-bold text-brand-700">Bons hábitos</p>

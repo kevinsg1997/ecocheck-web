@@ -1,4 +1,4 @@
-import type { SurveyResultDto } from '../types/api'
+import type { Category, SurveyResultDto } from '../types/api'
 import { readJson, removeItem, writeJson } from '../utils/storage'
 
 /**
@@ -20,8 +20,16 @@ export interface QuizProgress {
   stateCode: string
 }
 
+/** Dados mínimos das perguntas, para exibir pontos fortes e dicas no resultado. */
+export interface StoredQuestion {
+  id: number
+  category: Category
+  text: string
+}
+
 export interface StoredResult {
   result: SurveyResultDto
+  questions: StoredQuestion[]
   submittedAt: string
 }
 
@@ -31,8 +39,12 @@ export const localStore = {
   clearProgress: () => removeItem('session', KEYS.quizProgress),
 
   loadResult: () => readJson<StoredResult>('session', KEYS.result),
-  saveResult: (result: SurveyResultDto) =>
-    writeJson('session', KEYS.result, { result, submittedAt: new Date().toISOString() } satisfies StoredResult),
+  saveResult: (result: SurveyResultDto, questions: StoredQuestion[]) =>
+    writeJson('session', KEYS.result, {
+      result,
+      questions,
+      submittedAt: new Date().toISOString(),
+    } satisfies StoredResult),
 
   /** Marca local (sem identificação) usada só para avisar que este navegador já participou. */
   hasParticipated: () => readJson<string>('local', KEYS.participated) !== null,

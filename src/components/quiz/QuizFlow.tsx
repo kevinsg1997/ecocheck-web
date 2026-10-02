@@ -88,7 +88,10 @@ export function QuizFlow({ questionnaire, onReload }: QuizFlowProps) {
         countryCode: state.countryCode || undefined,
         stateCode: state.stateCode || undefined,
       })
-      localStore.saveResult(result)
+      localStore.saveResult(
+        result,
+        questionnaire.questions.map(({ id, category, text }) => ({ id, category, text })),
+      )
       localStore.markParticipated()
       localStore.clearProgress()
       navigate(routes.result, { replace: true })

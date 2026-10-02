@@ -11,6 +11,7 @@ import { Container } from '../ui/Container'
 const navItems = [
   { label: 'Como funciona', to: { pathname: routes.home, hash: '#como-funciona' } },
   { label: 'ODS', to: { pathname: routes.home, hash: '#ods' } },
+  { label: 'Estatísticas', to: { pathname: routes.statistics } },
   { label: 'Privacidade', to: { pathname: routes.privacy } },
 ]
 

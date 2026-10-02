@@ -5,7 +5,11 @@ import type { Category } from '../types/api'
 export interface CategoryInfo {
   id: Category
   name: string
+  /** Assunto da categoria em frases, ex.: "Você foi bem em {topic}". */
+  topic: string
   description: string
+  /** Cor da categoria nos gráficos (mesmo valor do token CSS correspondente). */
+  color: string
   icon: LucideIcon
   ods: number[]
   /** Classes estáticas para o Tailwind detectar no build. */
@@ -19,6 +23,8 @@ export interface CategoryInfo {
 export const categories: Record<Category, CategoryInfo> = {
   water: {
     id: 'water',
+    topic: 'consumo de água',
+    color: '#2f7fc1',
     name: 'Água',
     description: 'Banho, torneiras, vazamentos e reaproveitamento de água.',
     icon: Droplets,
@@ -27,6 +33,8 @@ export const categories: Record<Category, CategoryInfo> = {
   },
   energy: {
     id: 'energy',
+    topic: 'uso de energia',
+    color: '#d4911f',
     name: 'Energia',
     description: 'Iluminação, aparelhos em espera, climatização e eficiência.',
     icon: Zap,
@@ -35,6 +43,8 @@ export const categories: Record<Category, CategoryInfo> = {
   },
   waste: {
     id: 'waste',
+    topic: 'geração e descarte de resíduos',
+    color: '#1f9a87',
     name: 'Resíduos',
     description: 'Reciclagem, descartáveis, eletrônicos e desperdício de alimentos.',
     icon: Recycle,
@@ -43,6 +53,8 @@ export const categories: Record<Category, CategoryInfo> = {
   },
   consumption_and_mobility: {
     id: 'consumption_and_mobility',
+    topic: 'consumo e mobilidade',
+    color: '#c4683f',
     name: 'Consumo e Mobilidade',
     description: 'Transporte, compras conscientes e cuidado com espaços naturais.',
     icon: Bike,

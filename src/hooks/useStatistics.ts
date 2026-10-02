@@ -13,12 +13,13 @@ type State =
  * Busca as estatísticas e refaz a busca quando o filtro muda. Durante a troca de filtro,
  * mantém os dados anteriores em `previous` para a tela não "piscar".
  */
-export function useStatistics(filter: StatisticsFilter) {
+export function useStatistics(filter: StatisticsFilter, enabled = true) {
   const [state, setState] = useState<State>({ status: 'loading' })
   const [attempt, setAttempt] = useState(0)
   const { countryCode, stateCode } = filter
 
   useEffect(() => {
+    if (!enabled) return
     const controller = new AbortController()
 
     getStatistics({ countryCode, stateCode }, controller.signal)
@@ -32,7 +33,7 @@ export function useStatistics(filter: StatisticsFilter) {
       })
 
     return () => controller.abort()
-  }, [countryCode, stateCode, attempt])
+  }, [countryCode, stateCode, attempt, enabled])
 
   const reload = useCallback(() => {
     setState((current) => ({

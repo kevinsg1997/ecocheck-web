@@ -5,7 +5,6 @@ import { HomePage } from './pages/HomePage'
 import { NotFoundPage } from './pages/NotFoundPage'
 import { PrivacyPage } from './pages/PrivacyPage'
 import { QuizPage } from './pages/QuizPage'
-import { ResultPage } from './pages/ResultPage'
 import { routes } from './routes'
 
 export const router = createBrowserRouter([
@@ -14,7 +13,15 @@ export const router = createBrowserRouter([
     children: [
       { path: routes.home, element: <HomePage /> },
       { path: routes.quiz, element: <QuizPage /> },
-      { path: routes.result, element: <ResultPage /> },
+      // Páginas com gráficos (Recharts) carregadas sob demanda, para manter o início leve.
+      {
+        path: routes.result,
+        lazy: async () => ({ Component: (await import('./pages/ResultPage')).ResultPage }),
+      },
+      {
+        path: routes.statistics,
+        lazy: async () => ({ Component: (await import('./pages/StatisticsPage')).StatisticsPage }),
+      },
       { path: routes.privacy, element: <PrivacyPage /> },
       { path: '*', element: <NotFoundPage /> },
     ],

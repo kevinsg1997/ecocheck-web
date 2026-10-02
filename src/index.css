@@ -53,6 +53,20 @@
 
   --shadow-card: 0 1px 2px rgb(23 32 28 / 0.04), 0 6px 20px -8px rgb(23 32 28 / 0.1);
   --shadow-raised: 0 2px 4px rgb(23 32 28 / 0.04), 0 18px 40px -16px rgb(23 32 28 / 0.18);
+
+  /* Transição leve entre etapas do questionário (aplicada só com motion-safe) */
+  --animate-step-in: step-in 240ms ease-out both;
+
+  @keyframes step-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
 @layer base {

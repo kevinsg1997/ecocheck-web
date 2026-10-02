@@ -9,12 +9,14 @@ const LAST_UPDATED = '1º de outubro de 2026'
 const stored = [
   'As alternativas escolhidas em cada pergunta',
   'A pontuação calculada (geral e por categoria) e a classificação',
+  'País e estado, somente se você escolher informar',
   'A data e a hora do envio e a versão do questionário',
 ]
 
 const notCollected = [
   'Nome, e-mail, telefone, CPF ou endereço',
-  'Endereço IP, localização ou dados do dispositivo',
+  'Cidade, GPS ou qualquer localização precisa',
+  'Endereço IP ou dados do dispositivo',
   'Cookies de rastreamento, publicidade ou perfis de navegação',
 ]
 
@@ -74,6 +76,17 @@ export function PrivacyPage() {
           <p>
             As estatísticas públicas mostram apenas totais e percentuais. A distribuição por pergunta só é exibida a
             partir de 5 participantes, para que poucas respostas não revelem escolhas individuais.
+          </p>
+        </Section>
+
+        <Section title="Região (opcional)">
+          <p>
+            Ao final do questionário, você pode informar o país e, no caso do Brasil, o estado de onde responde. A
+            pergunta é opcional, não altera a pontuação e serve apenas para comparar hábitos entre regiões.
+          </p>
+          <p>
+            Uma região só aparece nas estatísticas quando reúne pelo menos 5 participantes. Isso reduz o risco de
+            que o resultado de alguém seja deduzido a partir da região informada.
           </p>
         </Section>
 

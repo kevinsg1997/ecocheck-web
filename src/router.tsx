@@ -5,6 +5,7 @@ import { HomePage } from './pages/HomePage'
 import { NotFoundPage } from './pages/NotFoundPage'
 import { PrivacyPage } from './pages/PrivacyPage'
 import { QuizPage } from './pages/QuizPage'
+import { ResultPage } from './pages/ResultPage'
 import { routes } from './routes'
 
 export const router = createBrowserRouter([
@@ -13,6 +14,7 @@ export const router = createBrowserRouter([
     children: [
       { path: routes.home, element: <HomePage /> },
       { path: routes.quiz, element: <QuizPage /> },
+      { path: routes.result, element: <ResultPage /> },
       { path: routes.privacy, element: <PrivacyPage /> },
       { path: '*', element: <NotFoundPage /> },
     ],

@@ -1,5 +1,7 @@
 # EcoCheck
 
+[![CI](https://github.com/kevinsg1997/ecocheck-web/actions/workflows/ci.yml/badge.svg)](https://github.com/kevinsg1997/ecocheck-web/actions/workflows/ci.yml) · [ecocheck.ksog.dev](https://ecocheck.ksog.dev)
+
 **Questionário educativo e anônimo sobre hábitos sustentáveis do dia a dia.**
 
 O EcoCheck convida as pessoas a refletir sobre como usam água e energia, como lidam com resíduos e como consomem e se deslocam. Depois de responder a 20 perguntas rápidas, a pessoa vê seu resultado, recebe dicas práticas e compara seus hábitos com a média de todos os participantes, filtrando por país e estado.

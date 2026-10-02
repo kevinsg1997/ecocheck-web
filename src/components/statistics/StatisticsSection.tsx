@@ -8,6 +8,7 @@ import { useStatistics } from '../../hooks/useStatistics'
 import { routes } from '../../routes'
 import type { HabitHighlightDto, StatisticsDto } from '../../types/api'
 import { cn } from '../../utils/cn'
+import { formatParticipants } from '../../utils/format'
 import { ChartCard } from '../charts/ChartCard'
 import { HBarChart } from '../charts/HBarChart'
 import { Alert } from '../ui/Alert'
@@ -301,7 +302,7 @@ function RegionBreakdown({ data }: { data: StatisticsDto }) {
     <section className="rounded-3xl bg-surface p-5 shadow-card ring-1 ring-line sm:p-6">
       <h3 className="text-base font-bold">Participação por região</h3>
       <p className="mt-1 text-sm text-muted">
-        {data.regions.participantsWithRegion} participantes informaram a região. Só aparecem regiões com pelo menos{' '}
+        {formatParticipants(data.regions.participantsWithRegion)} informaram a região. Só aparecem regiões com pelo menos{' '}
         {data.minimumParticipantsForDetails} pessoas.
       </p>
       <div className="mt-4 overflow-x-auto">

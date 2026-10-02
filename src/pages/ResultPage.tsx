@@ -15,6 +15,7 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import { useStatistics } from '../hooks/useStatistics'
 import { localStore } from '../services/localStore'
 import { routes } from '../routes'
+import { formatParticipants } from '../utils/format'
 import { buildEducationalMessage, getImprovements, getStrengths } from '../utils/resultInsights'
 
 /** Cores validadas (contraste e daltonismo) para a comparação "Você × média". */
@@ -113,7 +114,7 @@ export function ResultPage() {
           title="Seu desempenho por categoria"
           description={
             hasAverages
-              ? `Comparado com a média de ${globalStats!.totalParticipants.toLocaleString('pt-BR')} participantes.`
+              ? `Comparado com a média de ${formatParticipants(globalStats!.totalParticipants)}.`
               : 'Percentual de hábitos sustentáveis em cada área.'
           }
           legend={series.map((item) => ({ label: item.name, color: item.color }))}

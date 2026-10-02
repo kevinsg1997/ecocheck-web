@@ -1,0 +1,98 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Plus Jakarta Sans Variable', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+
+  /* Neutros com leve tom natural */
+  --color-canvas: #f7f7f3;
+  --color-surface: #ffffff;
+  --color-ink: #17201c;
+  --color-ink-soft: #3d4a44;
+  --color-muted: #5f6c66;
+  --color-line: #e4e6df;
+  --color-line-strong: #d3d7cd;
+
+  /* Marca: verde natural */
+  --color-brand-50: #effaf4;
+  --color-brand-100: #d8f1e3;
+  --color-brand-200: #b3e2c9;
+  --color-brand-300: #82cca7;
+  --color-brand-400: #4fb081;
+  --color-brand-500: #2f9466;
+  --color-brand-600: #237a53;
+  --color-brand-700: #1f6145;
+  --color-brand-800: #1c4e39;
+  --color-brand-900: #193f30;
+  --color-brand-950: #0c241b;
+
+  /* Categorias do questionário */
+  --color-water-50: #eef6fc;
+  --color-water-100: #d6e9f7;
+  --color-water-500: #2f7fc1;
+  --color-water-600: #2468a3;
+  --color-water-700: #1f5584;
+
+  --color-energy-50: #fdf7ea;
+  --color-energy-100: #faebc8;
+  --color-energy-500: #d4911f;
+  --color-energy-600: #b0761a;
+  --color-energy-700: #8a5c17;
+
+  --color-waste-50: #ecf8f6;
+  --color-waste-100: #cfeee8;
+  --color-waste-500: #1f9a87;
+  --color-waste-600: #187e6f;
+  --color-waste-700: #156559;
+
+  --color-consumption-50: #fbf1ec;
+  --color-consumption-100: #f5ddd1;
+  --color-consumption-500: #c4683f;
+  --color-consumption-600: #a45432;
+  --color-consumption-700: #84442b;
+
+  --shadow-card: 0 1px 2px rgb(23 32 28 / 0.04), 0 6px 20px -8px rgb(23 32 28 / 0.1);
+  --shadow-raised: 0 2px 4px rgb(23 32 28 / 0.04), 0 18px 40px -16px rgb(23 32 28 / 0.18);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    @apply bg-canvas text-ink font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-ink;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    @apply bg-brand-200 text-brand-950;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-600;
+  }
+
+  /* Âncoras não ficam escondidas atrás do header fixo */
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
+}

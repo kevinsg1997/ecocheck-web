@@ -39,7 +39,7 @@ export function HowItWorks() {
                 <span className="flex size-11 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
                   <Icon className="size-5" aria-hidden="true" />
                 </span>
-                <span className="font-display text-sm font-bold text-line-strong" aria-hidden="true">
+                <span className="font-display text-sm font-bold text-muted" aria-hidden="true">
                   0{index + 1}
                 </span>
               </div>

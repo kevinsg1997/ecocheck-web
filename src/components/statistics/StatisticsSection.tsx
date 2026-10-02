@@ -83,6 +83,8 @@ export function StatisticsSection({ global, headingLevel = 'h2' }: StatisticsSec
       </div>
 
       <div className="relative mt-6" aria-busy={current.isRefreshing}>
+        {/* Mantém a hierarquia de títulos (h1 → h2 → h3) quando a seção é a página inteira. */}
+        {headingLevel === 'h1' && <h2 className="sr-only">Indicadores</h2>}
         {current.isRefreshing && data && (
           <p className="absolute -top-5 right-0 flex items-center gap-1.5 text-xs text-muted" role="status">
             <Spinner className="size-3" /> Atualizando…

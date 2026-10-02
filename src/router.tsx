@@ -3,17 +3,21 @@ import { createBrowserRouter } from 'react-router'
 import { MainLayout } from './layouts/MainLayout'
 import { HomePage } from './pages/HomePage'
 import { NotFoundPage } from './pages/NotFoundPage'
-import { PrivacyPage } from './pages/PrivacyPage'
-import { QuizPage } from './pages/QuizPage'
 import { routes } from './routes'
 
+/**
+ * A página inicial é carregada junto com o app; as demais são carregadas sob demanda,
+ * para que a primeira visita baixe apenas o necessário (as páginas com gráficos usam Recharts).
+ */
 export const router = createBrowserRouter([
   {
     element: <MainLayout />,
     children: [
       { path: routes.home, element: <HomePage /> },
-      { path: routes.quiz, element: <QuizPage /> },
-      // Páginas com gráficos (Recharts) carregadas sob demanda, para manter o início leve.
+      {
+        path: routes.quiz,
+        lazy: async () => ({ Component: (await import('./pages/QuizPage')).QuizPage }),
+      },
       {
         path: routes.result,
         lazy: async () => ({ Component: (await import('./pages/ResultPage')).ResultPage }),
@@ -22,7 +26,10 @@ export const router = createBrowserRouter([
         path: routes.statistics,
         lazy: async () => ({ Component: (await import('./pages/StatisticsPage')).StatisticsPage }),
       },
-      { path: routes.privacy, element: <PrivacyPage /> },
+      {
+        path: routes.privacy,
+        lazy: async () => ({ Component: (await import('./pages/PrivacyPage')).PrivacyPage }),
+      },
       { path: '*', element: <NotFoundPage /> },
     ],
   },
